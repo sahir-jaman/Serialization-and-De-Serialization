@@ -51,7 +51,7 @@ def delete_data():
     print(r.json())
 
 # Execute those 4 below funciton 1 by 1.
-# get_data(1)
+get_data(1)
 # post_data()
-update_data()
+# update_data()
 # delete_data()

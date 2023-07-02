@@ -1,5 +1,5 @@
 """
-URL configuration for rest_crud project.
+URL configuration for basic_authentication project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,11 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from api import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+#Register StudentViewSet with Router
+router.register('students', views.StudentModelViewSet, basename=('student'))
+# router.register('students', views.StudentModelViewSet2, basename=('student'))
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("student-info/", views.Student_api.as_view()),
-    path("student-info/<int:pk>", views.Student_api.as_view()),
+    path("", include(router.urls) ),
 ]
